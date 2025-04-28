@@ -1,0 +1,13 @@
+import { createI18n } from 'vue-i18n'
+
+const messages = {
+  en: {/* ... your messages ... */},
+  'zh-cn': {/* ... your messages ... */}
+}
+
+export default createI18n({
+  legacy: false,
+  locale: localStorage.getItem('localLanguage') || 'en',
+  fallbackLocale: 'zh-cn',
+  messages
+})

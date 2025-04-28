@@ -1,19 +1,17 @@
-import { createMemoryHistory, createRouter } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 
-export default createRouter({
-  history: createMemoryHistory(),
+const router = createRouter({
+  history: createWebHistory(),
   routes: [
     {
       path: '/',
       name: 'Home',
-      component: () =>
-        import(/* webpackChunkName: "home" */ '../pages/HomePage.vue')
+      component: () => import('@/pages/HomePage.vue')
     },
     {
       path: '/settings',
       name: 'Settings',
-      component: () =>
-        import(/* webpackChunkName: "settings" */ '../pages/SettingsPage.vue')
+      component: () => import('@/pages/SettingsPage.vue')
     },
     {
       path: '/:pathMatch(.*)*',
@@ -21,3 +19,5 @@ export default createRouter({
     }
   ]
 })
+
+export default router

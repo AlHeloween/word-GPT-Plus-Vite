@@ -5,7 +5,6 @@ import router from './router'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 
-// Office Add-in must wait for Office APIs ready
 window.Office.onReady(() => {
   const app = createApp(App)
 
