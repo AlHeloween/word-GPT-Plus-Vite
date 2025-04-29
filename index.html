@@ -1,13 +1,70 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + Vue + TS</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0"
+    />
+    <title>Word-GPT-Plus</title>
+
+    <!-- 1. Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- 2. Inline “Hero” CSS -->
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        font-family: "Figtree", sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: #fff;
+        overflow: hidden;
+      }
+      #app {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        width: 100%;
+      }
+      .hero {
+        text-align: center;
+        max-width: 90%;
+        animation: fadeIn 1s ease-out forwards;
+        opacity: 0;
+      }
+      .hero h1 {
+        font-size: 3rem;
+        margin-bottom: 0.5rem;
+      }
+      .hero p {
+        font-size: 1.25rem;
+        line-height: 1.5;
+      }
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
+        }
+      }
+    </style>
   </head>
   <body>
-    <div id="app"></div>
+    <!-- 3. Vue mount point -->
+    <div id="app">
+      <!-- 4. Static “Hero” content until your Vue app replaces it -->
+      <div class="hero">
+        <h1>🚀 Welcome to Word-GPT-Plus</h1>
+        <p>Your intelligent Office add-in powered by Vue 3, Vite &amp; AI</p>
+      </div>
+    </div>
+
+    <!-- 5. Your main script -->
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

@@ -1,29 +1,33 @@
-// vite.config.ts
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import path from 'path'
 
 export default defineConfig({
-  plugins: [vue()],
+  plugins: [ vue() ],
   resolve: {
-    alias: {
-      '@': path.resolve(__dirname, 'src') // Allow '@/' to point to /src
+    alias: { '@': path.resolve(__dirname, 'src') }
+  },
+  build: {
+    // ← Move it here, under build
+    chunkSizeWarningLimit: 600,
+    rollupOptions: {
+      // keep Office.js external…
+      external: ['@microsoft/office-js'],
+      output: {
+        // …and your manualChunks stay here
+        manualChunks: {
+          'vendor-vue': ['vue','vue-router','vue-i18n'],
+          'vendor-elm': ['element-plus'],
+          'office-utils': ['@/utils/common']
+        },
+        globals: {
+          '@microsoft/office-js': 'Office'
+        }
+      }
     }
   },
   server: {
     port: 3000,
-    open: true, // Automatically open browser
-    proxy: {
-      '/api': {
-        target: 'http://localhost:5000', // Example backend API if needed
-        changeOrigin: true,
-        rewrite: path => path.replace(/^\/api/, '')
-      }
-    }
-  },
-  build: {
-    outDir: 'dist',
-    sourcemap: true
-  },
-  base: './' // Good for local file deployments too
+    open: true
+  }
 })
